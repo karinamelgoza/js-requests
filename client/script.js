@@ -20,7 +20,12 @@ const sayHelloButton = document.querySelector('#say-hello-button')
 */
 
 // CODE HERE
+function changeBackground() {
+    sayHelloButton.style.backgroundColor = 'black'
+    sayHelloButton.style.color = 'white'
+}
 
+sayHelloButton.addEventListener('mouseover', changeBackground)
 
 // PROBLEM 3
 /*
@@ -32,6 +37,12 @@ const sayHelloButton = document.querySelector('#say-hello-button')
 */
 
 // CODE HERE
+function changeBack() {
+    sayHelloButton.style.backgroundColor = '#EFEFEF'
+    sayHelloButton.style.color = 'black'
+}
+
+sayHelloButton.addEventListener('mouseout', changeBack)
 
 
 // PROBLEM 4
@@ -52,8 +63,7 @@ const sayHello = () => {
 // DO NOT EDIT FUNCTION
 
 // CODE HERE
-
-
+sayHelloButton.addEventListener('click', sayHello)
 // PROBLEM 5 
 /*
     Now that we have attached a few event listeners why dont we try adding a request? 
@@ -67,6 +77,11 @@ const sayHello = () => {
 
 const ohMy = () => {
     // YOUR CODE HERE
+    axios
+        .get('http://localhost:3000/animals')
+        .then(function (res) {
+            console.log(res.data)
+        })
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
@@ -87,7 +102,16 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 
 const repeatMyParam = () => {
     //YOUR CODE HERE
+    axios
+        .get('http://localhost:3000/repeat/repeat-button')
+        .then(function (res) {
+            return res.data
+        })
+    let repeatText = document.getElementById('repeat-text')
+    repeatText.textContent = res.data
 }
+
+document.getElementById('repeat-button').addEventListener('click', repeatMyParam)
 
 // PROBLEM 7
 /*
@@ -110,7 +134,11 @@ const repeatMyParam = () => {
 */
 
 // CODE HERE
-
+function sendQuery() {
+    axios
+        .get('http://localhost:3000/query-test/?name=karina')
+        .then()
+}
 
 
 ////////////////
